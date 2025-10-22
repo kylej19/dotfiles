@@ -1,0 +1,91 @@
+# .gitignore for cosc (C++ + Makefile) — macOS, Debian VM, Emacs (nox)
+# -----------------------------------------------------------------
+# General / macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+
+# Emacs (no X) and temp files
+*~
+\#*#
+.#*                       # Emacs lockfiles created by emacs --daemon and others
+.emacs.desktop
+.emacs.desktop.lock
+*autosave*
+*.elc                     # compiled elisp (if you build any)
+.emacs.d/auto-save-list/
+.emacs.d/.cache/
+
+# General editor swaps / backups (also useful if you sometimes use vim)
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
+
+# IDEs (in case you or classmates use them intermittently)
+.vscode/
+.idea/
+*.iml
+
+# Build artifacts (C/C++ / Make)
+# Object files and intermediate
+*.o
+*.obj
+*.lo
+*.d
+*.dSYM/
+*.gcno
+*.gcda
+*.gcov
+
+# Static & dynamic libraries and binaries
+*.so
+*.a
+*.lib
+*.dylib
+*.dll
+*.exe
+a.out
+*.out
+
+# Common build directories
+build/
+bin/
+obj/
+dist/
+_release/
+debug/
+release/
+
+# Coverage / test output
+coverage/
+lcov-report/
+
+# Packaging / temporary
+*.tar
+*.zip
+*.egg-info/
+*.egg
+
+# Logs, temp and cache
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+
+# Tags / indexing
+tags
+TAGS
+
+# Misc
+core
+*.stackdump
