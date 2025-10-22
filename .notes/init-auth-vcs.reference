@@ -1,0 +1,32 @@
+# configure auth and vcs
+requires: bash openssh gnupg git emacs-nox
+# ssh keys
+ssh-keygen -t ed25519 -C $EMAIL
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub >> $SSH_KEY_EXPORT
+
+# generate and configure gpg
+gpg --full-generate-key
+gpg --list-secret-keys --keyid-format=long | grep ed25519 | cut -f2 -d/ | cut -f1 --delimiter=' ' >> GPG_KEY_ID
+gpg --armor --export "$(cat GPG_KEY_ID)" >> $GPG_KEY_EXPORT
+cat $GPG_KEY_EXPORT >> $GITHUB_AUTH
+rm -fv GPG_KEY_ID
+
+# configure git
+git config --global user.name $NAME
+git config --global user.email $EMAIL
+git config --global user.signingkey $GPG_KEY_EXPORT
+git config --global commit.gpgsign true
+git config --global core.editor "emacs -nw"
+
+# git init bare repo > github
+git init --bare $HOME/.dotfiles
+alias dotconfig='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+dotconfig config --local status.showUntrackedFiles no
+echo "alias dotconfig='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'" >> ~/.bashrc
+dotconfig add ~/.gitconfig
+dotconfig commit -S -m "init commit: add .gitconfig"
+dotconfig remote add origin git@github.com:"$GH_USERNAME"/"$DOTFILES_REPO_NAME".git
+dotconfig push --set-upstream origin main
+#use dotconfig to add other files
