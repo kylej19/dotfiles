@@ -1,3 +1,5 @@
+
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -124,3 +126,17 @@ fi
 #PS1="\e[92m\h \e[1;95m\u\e[0m \e[0;34m(\l)  \e[32m\W  \e[0m\$ "
 
 #   end kj
+
+
+
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+#alias ls='ls --color=auto'
+#alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
