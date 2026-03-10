@@ -1,6 +1,7 @@
 unlet! skip_defaults_vim
 source $VIMRUNTIME/defaults.vim
 
+set number          " show the current line number
 set relativenumber  " relative line numbers
 set ignorecase      " search ignores case
 set nowrap          " do not wrap lines, truncate instead
