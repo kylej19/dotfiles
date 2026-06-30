@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # basic, blue prompt
-PS1='\033[94m\][\u@\h \W]\033[m\]\$ '
+PS1='\[\033[94m\][\u@\h \W]\[\033[m\]\$ '
 
 # fancy debian, color prompt
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
